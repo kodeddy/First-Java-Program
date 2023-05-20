@@ -47,5 +47,11 @@ public class Main {
         System.out.print("Enter your age: ");
         byte age = scanner.nextByte();
         System.out.println("You are " + age);
+
+        int i = 5;
+        while (i > 0) {
+            System.out.println("Hello World " + i);
+            i--;
+        }
     }
 }
