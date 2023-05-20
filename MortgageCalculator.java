@@ -25,7 +25,7 @@ public class MortgageCalculator {
 
         System.out.print("Annual Interest Rate: ");
         interest = scanner.nextDouble();
-        while (interest >= 0) {
+        while (interest > 0) {
             if (interest <= 30) {
                 break;
             }
