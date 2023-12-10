@@ -10,7 +10,7 @@ public class MortgageCalculator {
         int principal;
         double interest;
         int years;
-        double mortgage;
+//        double mortgage = 0;
 
         System.out.print("Principal ($1K - $1M): ");
         principal = scanner.nextInt();
@@ -36,23 +36,29 @@ public class MortgageCalculator {
 
         System.out.print("Period (Years): ");
         years = scanner.nextInt();
-        while (years > 0) {
-            if (years <= 30) {
+        while (years > -1) {
+            if (years <= 30 && years >= 1){
                 break;
             }
-            System.out.println("Enter a value bwtween 1 and 30.");
+            System.out.println("Enter a value between 1 and 30.");
             System.out.print("Period (Years): ");
             years = scanner.nextInt();
         }
 
-        double monthlyInterest = (interest / 100) / 12;
-        int period = years * 12;
-        double fractionConstant = Math.pow(1 + monthlyInterest, period);
-
-        mortgage = principal * (monthlyInterest * fractionConstant) / (fractionConstant - 1);
+        double mortgage = calculateMortgage(principal, interest, years);
         NumberFormat currency = NumberFormat.getCurrencyInstance();
         String finalMortgage = currency.format(mortgage);
-
         System.out.println("Mortgage: " + finalMortgage);
+    }
+
+    public static double calculateMortgage(int principal,
+                                           double interest,
+                                           int years){
+        int period = years * 12;
+        double monthlyInterest = (interest / 100) / 12;
+        double fractionConstant = Math.pow(1 + monthlyInterest, period);
+        double mortgage;
+        mortgage = principal * (monthlyInterest * fractionConstant) / (fractionConstant - 1);
+        return mortgage;
     }
 }
