@@ -5,50 +5,33 @@ import java.util.Scanner;
 
 public class MortgageCalculator {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
         int principal;
         double interest;
         int years;
-//        double mortgage = 0;
 
-        System.out.print("Principal ($1K - $1M): ");
-        principal = scanner.nextInt();
-        while (principal > -1) {
-            if (principal >= 1000 && principal <= 1000000) {
-                break;
-            }
-            System.out.println("Enter a number between 1,000 and 1,000,000.");
-            System.out.print("Principal ($1K - $1M): ");
-            principal = scanner.nextInt();
-        }
-
-        System.out.print("Annual Interest Rate: ");
-        interest = scanner.nextDouble();
-        while (interest > 0) {
-            if (interest <= 30) {
-                break;
-            }
-            System.out.println("Enter a number greater than 0, and less than or equal to 30.");
-            System.out.print("Annual Interest Rate: ");
-            interest = scanner.nextDouble();
-        }
-
-        System.out.print("Period (Years): ");
-        years = scanner.nextInt();
-        while (years > -1) {
-            if (years <= 30 && years >= 1){
-                break;
-            }
-            System.out.println("Enter a value between 1 and 30.");
-            System.out.print("Period (Years): ");
-            years = scanner.nextInt();
-        }
+        principal = (int) readNumber("Principal: ", 1000, 1000000);
+        interest = readNumber("Annual Interest Rate: ", 1, 30);
+        years = (int) readNumber("Period (Years): ", 1, 30);
 
         double mortgage = calculateMortgage(principal, interest, years);
         NumberFormat currency = NumberFormat.getCurrencyInstance();
         String finalMortgage = currency.format(mortgage);
         System.out.println("Mortgage: " + finalMortgage);
+    }
+
+    public static double readNumber(String prompt, double min, double max) {
+        Scanner scanner = new Scanner(System.in);
+        double value;
+        while (true) {
+            System.out.print(prompt);
+            value = scanner.nextDouble();
+            if (value >= min && value <= max) {
+                break;
+            }
+            System.out.println("Enter a number between " + min + " and " + max);
+        }
+        return value;
     }
 
     public static double calculateMortgage(int principal,
