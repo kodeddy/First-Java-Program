@@ -6,13 +6,9 @@ import java.util.Scanner;
 public class MortgageCalculator {
     public static void main(String[] args) {
 
-        int principal;
-        double interest;
-        int years;
-
-        principal = (int) readNumber("Principal: ", 1000, 1000000);
-        interest = readNumber("Annual Interest Rate: ", 1, 30);
-        years = (int) readNumber("Period (Years): ", 1, 30);
+        int principal = (int) readNumber("Principal: ", 1000, 1000000);
+        double interest = readNumber("Annual Interest Rate: ", 1, 30);
+        int years = (int) readNumber("Period (Years): ", 1, 30);
 
         double mortgage = calculateMortgage(principal, interest, years);
         NumberFormat currency = NumberFormat.getCurrencyInstance();
