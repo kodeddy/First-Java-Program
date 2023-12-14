@@ -7,7 +7,12 @@ public class PaymentCalculator {
 
     public static void main(String[] args) {
 
+        MortgageCalculator calMort = new MortgageCalculator();
+        calMort.mainRecall();
+        System.out.println("Payment Calculator");
 
     }
+
+
 
 }

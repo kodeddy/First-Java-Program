@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class MortgageCalculator {
     public static void main(String[] args) {
-
         int principal = (int) readNumber("Principal: ", 1000, 1000000);
         double interest = readNumber("Annual Interest Rate: ", 1, 30);
         int years = (int) readNumber("Period (Years): ", 1, 30);
@@ -14,6 +13,20 @@ public class MortgageCalculator {
         NumberFormat currency = NumberFormat.getCurrencyInstance();
         String finalMortgage = currency.format(mortgage);
         System.out.println("Mortgage: " + finalMortgage);
+    }
+
+    public static String mainRecall() {
+        int principal = (int) readNumber("Principal: ", 1000, 1000000);
+        double interest = readNumber("Annual Interest Rate: ", 1, 30);
+        int years = (int) readNumber("Period (Years): ", 1, 30);
+
+        double mortgage = calculateMortgage(principal, interest, years);
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        String finalMortgage = currency.format(mortgage);
+        System.out.println("\nMORTGAGE");
+        System.out.println("________");
+        System.out.println("Monthly Payments: " + finalMortgage);
+        return finalMortgage;
     }
 
     public static double readNumber(String prompt, double min, double max) {
