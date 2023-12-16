@@ -13,10 +13,12 @@ public class PaymentCalculator {
         double mortgage = calculateMortgage(principal, interest, years);
         NumberFormat currency = NumberFormat.getCurrencyInstance();
         String finalMortgage = currency.format(mortgage);
-        System.out.println("\nMORTGAGE");
+        System.out.println("MORTGAGE");
+        System.out.println();
         System.out.println("________");
         System.out.println("Monthly Payments: " + finalMortgage);
-        System.out.println("\nPAYMENT SCHEDULE");
+        System.out.println("PAYMENT SCHEDULE");
+        System.out.println();
         System.out.println("________________");
 
         double balance;
