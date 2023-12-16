@@ -4,21 +4,27 @@ import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class PaymentCalculator {
-
+    public static NumberFormat currency = NumberFormat.getCurrencyInstance();
     public static void main(String[] args) {
         int principal = (int) readNumber("Principal: ", 1000, 1000000);
         double interest = readNumber("Annual Interest Rate: ", 1, 30);
         int years = (int) readNumber("Period (Years): ", 1, 30);
 
+        printMortgage(principal, interest, years);
+        printPaymentSchedule(principal, interest, years);
+    }
+
+    public static void printMortgage(int principal, double interest, int years) {
         double mortgage = calculateMortgage(principal, interest, years);
-        NumberFormat currency = NumberFormat.getCurrencyInstance();
         String finalMortgage = currency.format(mortgage);
+
         System.out.println("MORTGAGE");
-        System.out.println();
         System.out.println("________");
         System.out.println("Monthly Payments: " + finalMortgage);
+    }
+
+    public static void printPaymentSchedule(int principal, double interest, int years) {
         System.out.println("PAYMENT SCHEDULE");
-        System.out.println();
         System.out.println("________________");
 
         double balance;
@@ -35,8 +41,6 @@ public class PaymentCalculator {
             String finalBalance = currency.format(balance);
             System.out.println(finalBalance);
         }
-
-
     }
 
     public static double readNumber(String prompt, double min, double max) {
